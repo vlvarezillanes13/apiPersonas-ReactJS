@@ -8,20 +8,22 @@ builder.Services.AddCors();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Conexion")));
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:3000");
-        });
-});
+builder.Services.AddCors();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.UseCors(options =>
+{
+    options.WithOrigins("http://localhost:3000");
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+});
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
