@@ -2,7 +2,7 @@
 
 namespace apiPersonas.Models
 {
-    public class Persona_BD
+    public class Personas_BD
     {
         [Key]
         public int id { get; set; }
