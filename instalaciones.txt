@@ -1,0 +1,2 @@
+npm i boostrap reactstrap axios
+npm install --save react-bootstrap bootstrap
